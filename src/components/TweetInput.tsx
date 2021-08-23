@@ -8,7 +8,7 @@ import firebase from "firebase/app";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
        
 
-const TweetInput = () => {
+const TweetInput: React.FC = () => {
   const user =useSelector(selectUser);
   const [tweetImage, setTweetImage] = useState<File | null>(null);
   const [tweetMsg, setTweetMsg] = useState("");
@@ -28,7 +28,7 @@ const TweetInput = () => {
         .map((n) => S[n % S.length])
         .join("");
       const fileName = randomChar + "_" + tweetImage.name;
-      const uploadTweetImg = storage.ref(`unages/${fileName}`).put(tweetImage);
+      const uploadTweetImg = storage.ref(`images/${fileName}`).put(tweetImage);
       uploadTweetImg.on(
         firebase.storage.TaskEvent.STATE_CHANGED,
 
